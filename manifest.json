@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn JobSnap",
+  "version": "1.0",
+  "description": "JobSnap: A fast and efficient browser extension that allows you to copy job data with a simple keyboard shortcut from the LinkedIn",
+  "permissions": ["clipboardWrite", "activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["*://www.linkedin.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "copy-job-data": {
+      "suggested_key": {
+        "default": "Ctrl+E",
+        "mac": "Command+E"
+      },
+      "description": "Copy job data"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
