@@ -12,4 +12,4 @@ How should you use JobSnap? Below you will find a link to a Google Sheets templa
 
 [Source Code of this extension - Put a star if you find the extension useful](https://github.com/alphamikle/job_snap)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G5--Enuuuf4?si=GksALIAS3KwqY0bn" title="JobSnap Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![JobSnap Demo](https://img.youtube.com/vi/G5--Enuuuf4/0.jpg)](https://www.youtube.com/watch?v=G5--Enuuuf4)
