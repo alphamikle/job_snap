@@ -23,6 +23,10 @@ function clearJobUrl(rawUrl) {
   return `${parsedUrl.origin}${parsedUrl.pathname}`;
 }
 
+function isJobPageLink() {
+  return window.location.href.includes('/jobs/view/');
+}
+
 async function copyTextToClipboard(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -131,19 +135,64 @@ function showNotification(content = 'Copied', color = 'rgba(0, 123, 255, 0.9)', 
   }, 4000);
 }
 
-async function copyData() {
+function findDataFromSearch() {
+  const data = {
+    companyName: '',
+    companyLink: '',
+    jobTitle: '',
+    jobLink: '',
+    salaryInfo: [],
+  };
   const jobParentNode = document.querySelector('.job-details-jobs-unified-top-card__job-title');
   const jobNode = jobParentNode.querySelector('a');
-  const jobTitle = jobNode.textContent
+  data.jobTitle = jobNode.textContent
     .replace(jobPrefixRegExp, '')
     .replace(jobPostfixRegExp, '');
-  const jobLink = clearJobUrl(jobNode.href);
+  data.jobLink = clearJobUrl(jobNode.href);
   const companyNode = document.querySelector('.job-details-jobs-unified-top-card__primary-description-container .app-aware-link');
-  const companyName = companyNode.textContent;
-  const companyLink = companyNode.href;
+  data.companyName = companyNode.textContent;
+  data.companyLink = companyNode.href;
+  data.salaryInfo = findSalaryDetails();
+  return data;
+}
+
+function findDataFromJobPage() {
+  const data = {
+    companyName: '',
+    companyLink: '',
+    jobTitle: '',
+    jobLink: '',
+    salaryInfo: [],
+  };
+  data.jobTitle = document.querySelector('.job-details-jobs-unified-top-card__job-title').textContent
+    .replace(jobPrefixRegExp, '')
+    .replace(jobPostfixRegExp, '');
+  data.jobLink = clearJobUrl(window.location);
+
+  const companyNode = document.querySelector('.job-details-jobs-unified-top-card__primary-description-without-tagline .app-aware-link');
+  data.companyName = companyNode.textContent;
+  data.companyLink = companyNode.href;
+  data.salaryInfo = findSalaryDetails();
+  return data;
+}
+
+async function copyData() {
+  const isJobPage = isJobPageLink();
+  let data = {};
+
+  if (isJobPage) {
+    data = findDataFromJobPage();
+  } else {
+    data = findDataFromSearch();
+  }
+
+  const jobTitle = data.jobTitle;
+  const jobLink = data.jobLink;
+  const companyName = data.companyName;
+  const companyLink = data.companyLink;
   let salaryFrom = '';
   let salaryTo = '';
-  const salaryInfo = findSalaryDetails();
+  const salaryInfo = data.salaryInfo;
 
   if (salaryInfo.length > 0) {
     const salaryType = salaryInfo[0];
