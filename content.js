@@ -1,8 +1,13 @@
 const jobPrefixRegExp = /^\s*\W*/;
 const jobPostfixRegExp = /\s*\W*$/;
+const salaryRegExp = /(\$[0-9,]+)(\/(yr|hr))(\s*-\s*\$[0-9,]+)?/g;
+
 const holidays = 30;
 const workingHours = 8;
 const workingHoursInTheYear = 2080;
+const mainKey = 'e';
+const salaryPerHour = 'hr';
+const salaryPerYear = 'yr';
 
 function getTodayDate() {
   const today = new Date();
@@ -33,7 +38,6 @@ function buildRow(jobTitle, jobLink, companyName, companyLink, salaryFrom, salar
 
 function findSalaryDetails() {
   const elements = document.querySelectorAll('.job-details-jobs-unified-top-card__job-insight');
-  const salaryPattern = /(\$[0-9,]+)(\/(yr|hr))(\s*-\s*\$[0-9,]+)?/g;
   let result = [];
 
   const searchInNode = (node) => {
@@ -43,7 +47,7 @@ function findSalaryDetails() {
 
     if (node.nodeType === Node.TEXT_NODE) {
       let match;
-      while ((match = salaryPattern.exec(node.nodeValue)) !== null) {
+      while ((match = salaryRegExp.exec(node.nodeValue)) !== null) {
         const salaryType = match[3];
         const firstAmount = parseInt(match[1].replace(/\$/g, '').replace(/,/g, ''));
         let secondAmount = null;
@@ -90,11 +94,7 @@ function showNotification(content = 'Copied', color = 'rgba(0, 123, 255, 0.9)', 
   notification.style.fontSize = '1em';
   notification.style.textAlign = 'center';
   notification.style.opacity = '0';
-  notification.style.transition = 'right 0.5s ease, opacity 0.5s ease';
-
-  if (shouldShake) {
-    notification.style.animation = 'shake 0.5s ease-in-out 0s 1';
-  }
+  notification.style.transition = 'right 0.45s ease, opacity 0.45s ease';
 
   const shakeKeyframes = `
         @keyframes shake {
@@ -117,6 +117,12 @@ function showNotification(content = 'Copied', color = 'rgba(0, 123, 255, 0.9)', 
     notification.style.opacity = '1';
   }, 100);
 
+  if (shouldShake) {
+    setTimeout(() => {
+      notification.style.animation = 'shake 0.4s ease-in-out 0s 1';
+    }, 650);
+  }
+
   setTimeout(() => {
     notification.style.right = '-200px';
     notification.style.opacity = '0';
@@ -124,7 +130,6 @@ function showNotification(content = 'Copied', color = 'rgba(0, 123, 255, 0.9)', 
     setTimeout(() => styleSheet.remove(), 500);
   }, 4000);
 }
-
 
 async function copyData() {
   const jobParentNode = document.querySelector('.job-details-jobs-unified-top-card__job-title');
@@ -145,14 +150,14 @@ async function copyData() {
     const rangeFrom = salaryInfo[1];
     const rangeTo = salaryInfo[2];
 
-    if (salaryType === 'yr') {
+    if (salaryType === salaryPerYear) {
       if (rangeFrom) {
         salaryFrom = `=${rangeFrom}`;
       }
       if (rangeTo) {
         salaryTo = `=${rangeTo}`;
       }
-    } else if (salaryType === 'hr') {
+    } else if (salaryType === salaryPerHour) {
       if (rangeFrom) {
         salaryFrom = `=${rangeFrom}*(${workingHoursInTheYear}-${holidays}*${workingHours})`;
       }
@@ -168,23 +173,15 @@ async function copyData() {
 }
 
 document.addEventListener('keydown', async function (event) {
-  if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
+  if ((event.ctrlKey || event.metaKey) && event.key === mainKey) {
     try {
       await copyData();
       showNotification();
     } catch (error) {
-      console.error('Error on copying the data.\nIf you seeing this message all the time, please contact with me: alphamikle@gmail.com and attach this error information:', error);
+      console.error('Error on copying the data.\nIf you seeing this message all the time, please contact with me:\nalphamikle@gmail.com\nand attach this error information:', '\n', error);
       showNotification('Error on copying. See the console for more details', 'rgba(231, 76, 60, 0.9)', true);
     }
   }
 });
-
-// chrome.commands.onCommand.addListener(function (command) {
-//   if (command === 'copy-job-data') {
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//       chrome.scripting.executeScript(tabs[0].id, { file: 'content.js' });
-//     });
-//   }
-// });
 
 console.log('JobSnap is working!');
