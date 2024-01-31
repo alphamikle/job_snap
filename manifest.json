@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "LinkedIn JobSnap",
+  "name": "JobSnap",
   "version": "1.1",
   "description": "JobSnap: A fast and efficient small tool that allows you to copy job details with a simple keyboard shortcut from the LinkedIn",
   "permissions": ["clipboardWrite", "activeTab", "scripting"],
