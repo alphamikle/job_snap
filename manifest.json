@@ -1,24 +1,15 @@
 {
   "manifest_version": 3,
   "name": "JobSnap",
-  "version": "1.1",
+  "version": "1.2",
   "description": "JobSnap: A fast and efficient small tool that allows you to copy job details with a simple keyboard shortcut from the LinkedIn",
-  "permissions": ["clipboardWrite", "activeTab", "scripting"],
+  "permissions": ["clipboardWrite"],
   "content_scripts": [
     {
       "matches": ["https://www.linkedin.com/*"],
       "js": ["content.js"]
     }
   ],
-  "commands": {
-    "copy-job-data": {
-      "suggested_key": {
-        "default": "Ctrl+E",
-        "mac": "Command+E"
-      },
-      "description": "Copy job data"
-    }
-  },
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
