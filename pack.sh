@@ -1,5 +1,7 @@
 #!/bin/bash
 
-INCLUDE=("icons" "background.js" "content.js" "manifest.json")
+INCLUDE=("icons" "js" "manifest.json")
+
+cd ./dist || exit 1
 
 zip -r job_snap.zip "${INCLUDE[@]}"

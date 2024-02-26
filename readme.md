@@ -12,6 +12,8 @@ JobSnap extension was created to simplify the process of building the funnel! I 
 
 How should you use JobSnap? Below you will find a link to a Google Sheets template that already has the required fields and automatic formatting set up. You need to copy this file to yourself, and start filling it with data. Then, you find the job you are interested in through the LinkedIn search, respond, press "Ctrl+E" or "Command+E" and all the important information about the position, such a company name, company profile link, job title, position link, salary range, and the current date will be copied to the clipboard. After that you just need to paste it into Google Sheets in a new line. After a while - you will receive rejections or invitations for technical interviews - just fill in the corresponding cell in Google Sheets and get your own success funnel.
 
+If the salary is specified in the format "per year" - then this value will simply be copied to the clipboard. If the compensation is specified as "per hour", the clipboard will contain the formula for calculating the annual compensation based on 2080 working hours per year, from which 30 working days are subtracted (you have to rest sometime).
+
 [Google Sheets Template](https://docs.google.com/spreadsheets/d/1VGj09vrj0zQ70QKs-N94lO5LXofafnf6a78pO_7wR1U/edit?usp=sharing)
 
 [My LinkedIn - Feel free to connect with me!](https://www.linkedin.com/in/alphamikle/)
