@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "JobSnap",
+  "version": "1.3",
+  "description": "JobSnap: A fast and efficient tool to copy job details with a simple keyboard shortcut from the large amount of job boards",
+  "permissions": ["clipboardWrite"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/*",
+        "https://www.workatastartup.com/*",
+        "https://www.ycombinator.com/*",
+        "https://www.indeed.com/*",
+        "https://www.glassdoor.com/*"
+      ],
+      "js": ["js/content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,6 +1,12 @@
-JobSnap is an Open Source and free browser extension that allows you to very quickly copy detailed info about a job you're about to apply for on LinkedIn:
+JobSnap is an Open Source and free browser extension that allows you to very quickly copy detailed info about a job you're about to apply for on:
 
-Searching for jobs on LinkedIn can be very tedious. In addition, to have an idea of the success of your efforts, you need to build a search funnel - how many responses were made, how many responses did you get, which company and position did you apply to, how many technical interviews did you have, and how many offers did you end up getting?
+- LinkedIn
+- Indeed
+- YCombinator (Jobs)
+- GlassDoor
+
+Searching for a job can be very tedious.
+In addition, to have an idea of the success of your efforts, you need to build a search funnel - how many responses were made, how many responses did you get, which company and position did you apply to, how many technical interviews did you have, and how many offers did you end up getting?
 
 JobSnap extension was created to simplify the process of building the funnel! I am a software developer myself and I know from my own experience how much time it takes to put everything in order and not forget anything. At some point I got tired of adding all the data to Google Sheet manually. So I decided to make a simple and effective tool for this task. That's exactly what JobSnap is: simple, fast, and useful.
 
@@ -12,4 +18,4 @@ How should you use JobSnap? Below you will find a link to a Google Sheets templa
 
 [Source Code of this extension - Put a star if you find the extension useful](https://github.com/alphamikle/job_snap)
 
-[![JobSnap Demo](https://img.youtube.com/vi/G5--Enuuuf4/0.jpg)](https://www.youtube.com/watch?v=G5--Enuuuf4)
+[![JobSnap Demo](https://img.youtube.com/vi/ZUVHMMLnJTQ/0.jpg)](https://youtu.be/ZUVHMMLnJTQ)
