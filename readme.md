@@ -1,4 +1,10 @@
-JIC is an Open Source and free browser extension that allows you to very quickly copy detailed info about a job you're about to apply for on:
+# Job Info Copier from job boards LinkedIn, YC, Indeed and GlassDoor
+
+### JIC: A fastest way to copy job details with a simple keyboard shortcut from the large amount of job boards to help you in job search
+
+[Chrome Store](https://chromewebstore.google.com/detail/jobsnap/idniigalpmocloigbflgjoigmnccajda)
+
+**JIC** is an Open Source and free browser extension that allows you to very quickly copy detailed info about a job you're about to apply for on:
 
 - LinkedIn (https://www.linkedin.com)
 - Indeed (https://www.indeed.com)
